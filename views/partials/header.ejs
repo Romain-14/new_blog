@@ -1,0 +1,17 @@
+<header>
+    <nav>
+        <a href="/">home</a>
+        <% if (session.user?.role === "admin") { %>
+            <a href="/admin">admin</a>
+         
+        <% } %>
+        <% if (session.isLogged ) { %>
+            <a href="/logout">logout</a>
+         
+        <% } else { %>
+            <a href="/login">login</a>
+            <a href="/register">register</a>
+
+        <% } %>
+    </nav>
+</header>

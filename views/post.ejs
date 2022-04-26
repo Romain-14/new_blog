@@ -1,0 +1,32 @@
+
+<article>
+    <h2>article <%= post.Title%></h2>
+    <p><%= post.Contents%></p>
+    <p><%= post.FirstName %> <%= post.LastName %></p>
+
+    <hr>
+    
+</article>
+
+<section>
+
+    <% if(comments.length){ %>
+        
+        <% comments.forEach(comment => { %>
+            <h3><%= comment.NickName%></h3>
+            <p><%= comment.Contents%></p>
+            <p><%= comment.CreationTimestamp.toLocaleDateString()%></p>
+        <% }) %>
+
+    <% } %> 
+    
+    <hr>
+
+<form action="/add_comment/<%= post.Id%>" method="post">
+    <input type="text" name="NickName">
+    <textarea name="Content"></textarea>
+    <input type="submit">
+
+</form>
+
+</section>

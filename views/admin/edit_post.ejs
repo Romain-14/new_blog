@@ -1,0 +1,10 @@
+<h2>edit post</h2>
+
+
+<form action="/edit_post/<%= post.Id%>" method="post">
+
+    <input type="text" name="Title" value="<%= post.Title%>" >
+    <textarea name="Contents"><%= post.Contents%></textarea>
+    <input type="submit">
+
+</form>

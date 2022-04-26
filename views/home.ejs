@@ -1,0 +1,23 @@
+
+    <h1>Welcome to my blog</h1>
+
+    <% if (session.isLogged) { %>
+        <p>welcome <%= session.user.firstname%></p>
+     
+    <% } %>
+
+    <% posts.forEach(post => { %>
+
+        <article>
+
+            <a href="/post/<%= post.Id %>">
+                <h2><%= post.Title%></h2>
+                <p><%= post.Contents.substring(0,30)%>...</p>
+                <p><%= post.FirstName%> <%= post.LastName%></p>
+                <p><%= post.CreationTimestamp.toLocaleDateString() %></p>
+                
+            </a>
+
+        </article>
+
+    <% }) %>
