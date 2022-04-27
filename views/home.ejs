@@ -1,23 +1,65 @@
-
+<main>
     <h1>Welcome to my blog</h1>
 
-    <% if (session.isLogged) { %>
-        <p>welcome <%= session.user.firstname%></p>
-     
-    <% } %>
+    <aside>
+        <% if (session.isLogged) { %>
 
-    <% posts.forEach(post => { %>
+            <p>welcome <%= session.user.firstname %></p>
 
+        <% } %> 
+
+        <% if (error !== null) { %>
+            <p><%= error %></p>
+        <% } %>
+    </aside>
+
+    <section>
         <article>
+            <h2>About me</h2>
 
-            <a href="/post/<%= post.Id %>">
-                <h2><%= post.Title%></h2>
-                <p><%= post.Contents.substring(0,30)%>...</p>
-                <p><%= post.FirstName%> <%= post.LastName%></p>
-                <p><%= post.CreationTimestamp.toLocaleDateString() %></p>
-                
-            </a>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
 
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
         </article>
 
-    <% }) %>
+        <article>
+            <h2>What you will find here </h2>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
+
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed ad
+                maxime corrupti laudantium iste sunt.
+            </p>
+        </article>
+    </section>
+</main>

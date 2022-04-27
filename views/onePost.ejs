@@ -1,6 +1,6 @@
 
 <article>
-    <h2>article <%= post.Title%></h2>
+    <h2><%= post.Title%></h2>
     <p><%= post.Contents%></p>
     <p><%= post.FirstName %> <%= post.LastName %></p>
 
@@ -22,9 +22,9 @@
     
     <hr>
 
-<form action="/add_comment/<%= post.Id%>" method="post">
-    <input type="text" name="NickName">
-    <textarea name="Content"></textarea>
+<form action="/blog/add_comment/<%= post.Id%>" method="post">
+    <input type="text" name="NickName" placeholder="Your Alias">
+    <textarea name="Content" placeholder="Your message"></textarea>
     <input type="submit">
 
 </form>

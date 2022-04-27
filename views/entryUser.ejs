@@ -1,0 +1,35 @@
+
+<% if (type === 'signin') {%>
+
+	<h2>Sign in</h2>
+
+	<form action="/entryUser/signin" method="POST">
+		<input type="text" name="email" placeholder="johnDoe@gmail.com">
+		<input type="password" name="password" placeholder="password">
+		<input type="submit">
+	</form>
+
+	<p>Don't have an account ?</p>
+	<a href="/entryUser/signup">Sign up</a>
+
+<% } %>
+
+<% if (error !== null){%>
+	<p><%= error%></p>
+<% }%>
+
+<% if (type === 'signup') {%>
+	<h2>Sign up</h2>
+
+	<form action="/entryUser/signup" method="post">
+		<input type="text" name="firstName" placeholder="Your firstname">
+		<input type="text" name="lastName" placeholder="Your lastname">
+		<input type="text" name="email" placeholder="Your email">
+		<input type="password" name="password" placeholder="Your password">
+		<input type="submit">
+	</form>
+
+	<p>Already have an account ?</p>
+	<a href="/entryUser/signin">Sign in</a>
+
+<% } %>

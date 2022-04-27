@@ -1,0 +1,20 @@
+
+<% if(error !== null){%>
+    <p><%= error %></p>
+<% }%>
+
+<% posts.forEach( post => { %>
+
+    <article>
+
+        <a href="/blog/<%= post.Id %>">
+            <h2><%= post.Title%></h2>
+            <p><%= post.Contents.substring(0,30)%>...</p>
+            <p><%= post.FirstName%> <%= post.LastName%></p>
+            <p><%= post.CreationTimestamp.toLocaleDateString() %></p>
+            
+        </a>
+
+    </article>
+
+<% }) %>
