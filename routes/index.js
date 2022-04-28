@@ -9,15 +9,13 @@ import isAdmin from '../middlewares/isAdmin.js';
 const router = express.Router();
 
 router.get('/', homePage);
+
 router.use('/blog', blogRoutes);
 router.use('/entryUser', entryRoutes);
 router.use('/admin', isAdmin, adminRoutes);
+
 router.get('/problem_server', (req,res,next)=>{
     res.render('problem_server');
 });
-
-
-
-
 
 export default router;

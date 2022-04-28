@@ -28,26 +28,6 @@ app.use(router);
 app.use('/*', pageNotFound);
 
 
-
-/*******************/
-/****** ADMIN ******/
-/*******************/
-
-
-
-
-
-// app.post('/add_post', (req,res)=>{
-//     pool.query('INSERT INTO Post (Title, Contents, Author_Id, Category_Id, CreationTimestamp) VALUES (?, ?, ?, ?, NOW())', [req.body.title, req.body.content, req.body.author, req.body.category ], function (error) {
-//         if(error){
-//             throw error
-//         }
-//         res.redirect("/admin");
-//     });
-// });
-
-
-
 // app.post('/edit_post/:id', (req,res) => {
 //     const id = req.params.id;
 
@@ -58,63 +38,6 @@ app.use('/*', pageNotFound);
 //         res.redirect("/admin");
 //     });
 // });
-
-// app.get('/delete_post/:id', (req,res)=>{
-//     const id = req.params.id;
-//     console.log(id);
-//     pool.query('DELETE FROM post WHERE id = ?', [id], (err, result)=>{
-//         if(err){
-//             throw err
-//         }
-//         console.log(result);
-//         res.redirect('/admin');
-//     });
-// });
-
-/*******************/
-/****** USER *******/
-/*******************/
-
-
-
-
-
-// app.post('/login', async (req, res, next)=>{
-//     const email = req.body.email;
-//     const password = req.body.password;
-//     pool.query("SELECT * FROM user WHERE Email = ?", [email], async function (err, user){
-//         if(err){
-//             res.render("layout", {
-//                     template: "login",
-//                     error: "problème de récupération sur la bdd",                    
-//                 });
-//         }        
-//         if(!user.length){
-//             res.render('layout', {template: "login", error: "user doesn't exist",})
-//         } else {
-//             const isPwValid = await bcrypt.compare(password, user[0].Password);
-//             if(isPwValid){
-//                 req.session.user = {
-//                     firstname : user[0].FirstName,
-//                     role : user[0].Role,
-//                 }
-//                 req.session.isLogged = true;
-
-//                 if(user[0].Role === "admin"){
-//                     res.redirect('/admin');
-//                 } else {
-//                     res.redirect("/");           
-//                 }
-//             } else {
-//                 res.render("layout", {
-//                     template: "login",
-//                     error: "bad password",                    
-//                 }) 
-//             }
-//         }        
-//     })
-// })
-
 
 
 app.listen(PORT, ()=>{

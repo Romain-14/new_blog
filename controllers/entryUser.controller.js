@@ -19,17 +19,15 @@ export const getController = (req,res,next)=>{
 export const postController = async (req,res,next)=>{
 
     if(req.url === '/signin'){
+        const datas = {
+            q: 'SELECT * FROM user WHERE Email = ?',
+            value : req.body.email,
+            password : req.body.password,
+        }
         try {
-            const datas = {
-                email : req.body.email,
-                password : req.body.password,
-                sql: 'SELECT * FROM user WHERE Email = ?',
-            }
-            const user = await User.getUserByEmail(datas.email, datas.sql);
-          
+            const user = await User.getUserByField(datas);          
             if(!user.length){
                 res.render('layout', {template: "entryUser",type:"signin", error: "user doesn't exist",})
-            
             } else {
                 const isPwValid = await bcrypt.compare(datas.password, user[0].Password);
                 if(isPwValid){
@@ -38,7 +36,6 @@ export const postController = async (req,res,next)=>{
                         role : user[0].Role,
                     }
                     req.session.isLogged = true;
-
                     if(user[0].Role === "admin"){
                         res.redirect('/admin');
                     } else {
@@ -53,7 +50,6 @@ export const postController = async (req,res,next)=>{
                 }
             }         
         } catch (error) {
-            console.log(error);
             res.redirect('/problem_server');
         }
     }
@@ -62,19 +58,15 @@ export const postController = async (req,res,next)=>{
         try {
             const hash = await bcrypt.hash(req.body.password, saltrounds);
             const datas = {
-                id : null,
                 email : req.body.email,
                 password : hash,
                 role : "user",
                 firstname : req.body.firstName,
                 lastname : req.body.lastName,
-                sql: 'INSERT INTO user (Email, Password, Role, FirstName, LastName) VALUES (?,?,?,?,?)',
             }
-            const newUser = new User(datas.id,datas.email,datas.password,datas.role,datas.firstname,datas.lastname,datas.sql,)
-            const result = await newUser.save();
+            const query = 'INSERT INTO user (Email, Password, Role, FirstName, LastName) VALUES (?,?,?,?,?)';await User.save(query, datas);
             res.redirect('/entryUser/signin');
         } catch (error) {
-            console.log(error);
             res.redirect('/problem_server');
         }        
     }

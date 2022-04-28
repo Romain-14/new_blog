@@ -2,10 +2,10 @@
 
     <a href="/admin"><i class="fa-solid fa-hand-point-left"></i> back to admin panel</a>
 
-    <form action="/edit_post/<%= post.Id%>" method="post">
+    <form action="/admin/edit_post/<%= post.Id%>" method="post">
 
-        <input type="text" name="Title" value="<%= post.Title%>" >
-        <textarea name="Contents"><%= post.Contents%></textarea>
+        <input type="text" name="title" value="<%= post.Title%>" >
+        <textarea name="content"><%= post.Contents%></textarea>
         <input type="submit">
 
     </form>

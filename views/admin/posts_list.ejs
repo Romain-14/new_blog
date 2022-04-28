@@ -8,12 +8,12 @@
 
         <% posts.forEach(el => { %>
             <article>
-                <a href="/post/<%= el.Id%>">
-                    <h3><%= el.Title%></h3>
-                    <p><%= el.Contents.substring(0,30)%>...</p>
-                    <p><%= el.FirstName%> <%= el.LastName%></p>
-                    <p><%= el.Category_Name%></p>
-                </a>
+            
+                <h3><%= el.Title%></h3>
+                <p><%= el.Contents.substring(0,30)%>...</p>
+                <p><%= el.FirstName%> <%= el.LastName%></p>
+                <p><%= el.Category_Name%></p>
+             
 
                 <a href="edit_post/<%= el.Id%>">edit</a>
                 <a href="delete_post/<%= el.Id%>">delete</a>

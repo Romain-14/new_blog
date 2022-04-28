@@ -2,28 +2,15 @@ import pool from "../config/database/db.js";
 
 class User {
 
-    constructor(id, email, password, role,firstname, lastname, sql ){
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.sql = sql;
-    }
-
-    static async getUserByEmail(email, sql){
-        const [query] = await pool.execute(sql, [email]);
+    static async getUserByField({q, value}){
+        const [query] = await pool.execute(q, [value]);
         return query;
     }
 
-    async save(){
-        const [query] = await pool.execute(this.sql, [this.email, this.password, this.role, this.firstname, this.lastname])
+    static async save(q, datas){
+        const [query] = await pool.execute(q, [...Object.values(datas)]);
         return query;
     }
-
-
-
 
 }
 
