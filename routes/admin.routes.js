@@ -8,7 +8,9 @@ import {
     editPostPage,
     addPost,
     editPost,
-    deletePost
+    deletePost,
+    getUsers,
+    updateUser,
 } from '../controllers/admin.controller.js';
 
 const router = express.Router();
@@ -23,6 +25,8 @@ router.get('/posts_list', postsListPage );
 router.get('/comments_list', commentsListPage );
 
 router.get('/users_list', usersListPage );
+router.get('/users_list/all', getUsers );
+router.post('/users_list/update/:id', updateUser );
 
 router.get('/edit_post/:id', editPostPage );
 router.post('/edit_post/:id', editPost );

@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { saltrounds } from '../config/index.js';
 import User from '../models/entryUser.model.js';
 
-export const getController = (req,res,next)=>{
+export const renderPage = (req,res,next)=>{
     
     if(req.url === '/signin'){
         res.render('layout', {template: "entryUser", type:"signin"});
@@ -16,7 +16,7 @@ export const getController = (req,res,next)=>{
     }
 }
 
-export const postController = async (req,res,next)=>{
+export const entry = async (req,res,next)=>{
 
     if(req.url === '/signin'){
         const datas = {

@@ -1,10 +1,10 @@
 import express from 'express';
-import {getController, postController} from '../controllers/entryUser.controller.js'
+import {renderPage, entry} from '../controllers/entryUser.controller.js'
 
 const router = express.Router();
 
-router.get(['/signin', '/signup', '/signout'], getController);
-router.post(['/signin', '/signup'], postController);
+router.get(['/signin', '/signup', '/signout'], renderPage);
+router.post(['/signin', '/signup'], entry);
 
 
 export default router;

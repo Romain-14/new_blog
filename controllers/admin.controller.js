@@ -1,4 +1,5 @@
 import Blog from "../models/blog.model.js";
+import User from "../models/entryUser.model.js";
 
 export const adminPage = async (req,res,next)=>{
     try {
@@ -53,7 +54,7 @@ export const commentsListPage = async (req,res,next)=>{
     }
 }
 export const usersListPage = async (req,res,next)=>{
-    try {
+    try {      
         res.render('layout', {
                 template: "admin/users_list",                
             });        
@@ -113,6 +114,33 @@ export const deletePost = async (req,res,next)=>{
     try {
         await Blog.delete(query, id);
         res.redirect('/admin/posts_list');        
+    } catch (error) {
+        res.redirect('/problem_server');
+    }
+}
+
+export const getUsers = async (req,res,next)=>{
+    console.log('adz');
+    const query = 'SELECT * FROM user';
+    
+    try {
+        const datas = await User.getAllUsersQuery(query);
+        res.json(datas);
+
+    } catch (error) {
+        res.redirect('/problem_server');
+    }
+}
+
+export const updateUser = async (req,res,next) => {
+    const datas = {
+        role: req.body.role,
+        id: req.params.id,
+    }
+    const query = 'UPDATE User SET Role = ? WHERE Id =?';
+    try {
+        await User.save(query, datas);
+        res.json({status: 200, msg: "user role updated"})
     } catch (error) {
         res.redirect('/problem_server');
     }
