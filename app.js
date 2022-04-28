@@ -33,23 +33,9 @@ app.use('/*', pageNotFound);
 /****** ADMIN ******/
 /*******************/
 
-// app.get('/admin', (req,res)=>{
-//     const sql = 'SELECT Post.Id, Title, Contents, CreationTimestamp, FirstName, LastName, Category.Name AS Category_Name FROM Post INNER JOIN Author ON Post.Author_Id = Author.Id INNER JOIN Category ON Post.Category_Id = Category.Id ORDER BY CreationTimestamp DESC';
-
-//     pool.query(sql, function(err, results){
-
-//         res.render('layout', {template:'admin/admin', results: results})
-//     });
-// });
 
 
-// app.get('/add_post', (req,res)=>{
-//     pool.query('SELECT * FROM Author ', function (err, authors){
-//         pool.query('SELECT * FROM Category', function (err, categories){
-//             res.render('layout', {template:'admin/add_post', authors: authors, categories: categories })
-//         });
-//     });
-// });
+
 
 // app.post('/add_post', (req,res)=>{
 //     pool.query('INSERT INTO Post (Title, Contents, Author_Id, Category_Id, CreationTimestamp) VALUES (?, ?, ?, ?, NOW())', [req.body.title, req.body.content, req.body.author, req.body.category ], function (error) {
@@ -60,13 +46,7 @@ app.use('/*', pageNotFound);
 //     });
 // });
 
-// app.get('/edit_post/:id', (req,res)=>{
-//     const id = req.params.id;
 
-//     pool.query('SELECT * FROM Post WHERE id = ?', [id], (err, post)=>{
-//         res.render('layout', {template: 'admin/edit_post', post: post[0]});
-//     });
-// });
 
 // app.post('/edit_post/:id', (req,res) => {
 //     const id = req.params.id;

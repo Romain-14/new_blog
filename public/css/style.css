@@ -1,9 +1,67 @@
-body {
-    background-color: #333;
-    color: #fff;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    background-color: #FCFCFC;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 a {
-    color: #fff; 
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #333;
+}
+
+a, p {
+    letter-spacing: 0.19px;
+    line-height: 20px;
+}
+
+nav a {
+    display: block;
+    text-align: center;
+    padding: 2%;
+    box-shadow: 0px 5px 10px -8px #333;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    margin: 2%;
+}
+
+h2 {
+    margin: 2% 0;
+}
+
+article, form{
+    background-color: #105A93;
+    border-radius: 10px;
+    box-shadow: 2px 3px 4px #000;
+    padding: 2%;
+    margin: 2%;
+    color: #FCFCFC;
+}
+
+input {
+    padding: 3%;
+}
+
+input[type="submit"]{
+    width: fit-content;
+    color: #105A93;
+    background-color: #FCFCFC;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 10px;
+    margin: 3% auto 1%;
+}
+
+#home section article:nth-of-type(2) h2{
+    text-align: right;
 }
 
 #error-server{
@@ -16,7 +74,6 @@ a {
 }
 
 #admin article{
-
     border: 1px solid;
     margin: 15px auto;
     padding: 10px;
@@ -26,9 +83,47 @@ form{
     display: flex;
     flex-direction: column;
     width: 50%;
-    margin: auto;
+    margin: 4% auto;
+    padding: 5%;
 }
 
 input, textarea, select{
     margin-bottom: 8px;
+}
+
+#entryUser div {
+
+    text-align: center;
+
+}
+
+#entryUser div a{
+
+    text-decoration: underline;
+
+}
+
+#entryUser h2, #addPost h2 {
+    text-align: center;
+}
+
+#blog article a, #blog article p{
+    color: #FCFCFC;
+}
+
+.fa-solid {
+    margin-right: 2%;
+}
+
+footer p{
+    text-align: center;
+}
+
+#admin {
+    min-height: 80vh;
+
+}
+#admin h2{
+    text-align: center;
+
 }

@@ -28,36 +28,34 @@ export const postController = async (req,res,next)=>{
             const user = await User.getUserByEmail(datas.email, datas.sql);
           
             if(!user.length){
-            res.render('layout', {template: "entryUser",type:"signin", error: "user doesn't exist",})
-        
-        } else {
-            const isPwValid = await bcrypt.compare(datas.password, user[0].Password);
-            if(isPwValid){
-                req.session.user = {
-                    firstname : user[0].FirstName,
-                    role : user[0].Role,
-                }
-                req.session.isLogged = true;
-
-                if(user[0].Role === "admin"){
-                    res.redirect('/admin');
-                } else {
-                    res.redirect("/");           
-                }
+                res.render('layout', {template: "entryUser",type:"signin", error: "user doesn't exist",})
+            
             } else {
-                res.render("layout", {
-                    template: "entryUser",
-                    type:"signin",
-                    error: "bad password",                    
-                }) 
-            }
-        }        
-   
+                const isPwValid = await bcrypt.compare(datas.password, user[0].Password);
+                if(isPwValid){
+                    req.session.user = {
+                        firstname : user[0].FirstName,
+                        role : user[0].Role,
+                    }
+                    req.session.isLogged = true;
+
+                    if(user[0].Role === "admin"){
+                        res.redirect('/admin');
+                    } else {
+                        res.redirect("/");           
+                    }
+                } else {
+                    res.render("layout", {
+                        template: "entryUser",
+                        type:"signin",
+                        error: "bad password",                    
+                    }) 
+                }
+            }         
         } catch (error) {
             console.log(error);
             res.redirect('/problem_server');
         }
-        // res.render('layout', {template: "entryUser", type:"signin"});
     }
     
     if(req.url === '/signup'){
@@ -78,8 +76,7 @@ export const postController = async (req,res,next)=>{
         } catch (error) {
             console.log(error);
             res.redirect('/problem_server');
-        }
-        
+        }        
     }
 }
 

@@ -1,24 +1,25 @@
 import Blog from "../models/blog.model.js";
 
 export const blogPage = async (req,res,next)=>{
+    const query = "SELECT Post.Id, Title, Contents, CreationTimestamp, FirstName, LastName FROM Post INNER JOIN Author ON Post.Author_Id = Author.Id ORDER BY CreationTimestamp DESC";
     try {
-        const [rows] = await Blog.getAllPosts();
+        const [rows] = await Blog.getData(query);
         res.render('layout', {
                 template: "blog",
                 posts: rows,
-            });
-        
+            });        
     } catch (error) {
         console.log(error);
         res.redirect('/problem_server');
     }
 }
 
-
 export const onePostPage = async (req, res, next) => {
     const id = req.params.id;
+    const query1 = 'SELECT Post.Id, Title, Contents, CreationTimestamp, FirstName, LastName FROM Post INNER JOIN Author ON Post.Author_Id = Author.Id WHERE Post.Id = ?';
+    const query2 = 'SELECT * FROM Comment WHERE Post_Id = ?';
     try {
-        const result = await Blog.getOnePostAndCommentsById(id);
+        const result = await Blog.getOnePostAndCommentsById(id, query1, query2);
 
         if(!result[0].length){
             res.redirect('/pageNotFound');
@@ -35,15 +36,14 @@ export const onePostPage = async (req, res, next) => {
 export const addComment = async (req,res, next) =>{
     
     const datas = {
-        id : req.params.id,
         nickname : req.body.NickName,
         content : req.body.Content,
-        sql: 'INSERT INTO Comment (NickName, Contents, CreationTimestamp, Post_Id) VALUES (?, ?, NOW(), ?)',
+        id : req.params.id,
     }
-
-    try {        
-        const newComment = new Blog(datas.id, datas.nickname, datas.content, datas.sql);
-        const result = await newComment.save();
+    
+    const query = 'INSERT INTO Comment (NickName, Contents, CreationTimestamp, Post_Id) VALUES (?, ?, NOW(), ?)';
+    try {
+        const result = await Blog.save(query, datas);
         res.redirect("/blog/" + datas.id);
         
     } catch (error) {

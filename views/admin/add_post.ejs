@@ -1,28 +1,31 @@
+<main id="addPost" role="main">
+    
+    <h2>ADD POST</h2>
 
-<h2>ADD POST</h2>
+    <a href="/admin"><i class="fa-solid fa-hand-point-left"></i> back to admin panel</a>
 
-<form action="/add_post" method="post">
+    <form action="/admin/add_post" method="post">
 
-    <input type="text" name="title" >
-    <textarea name="content"></textarea>
+        <input type="text" name="title" >
+        <textarea name="content"></textarea>
 
-    <select name="author">
-        <% authors.forEach(author => { %>
-            <option value="<%= author.Id%>"><%= author.FirstName%> <%= author.LastName%></option>
-         
-        <% }) %>
+        <select name="author">
+            <% authors.forEach(author => { %>
+                <option value="<%= author.Id%>"><%= author.FirstName%> <%= author.LastName%></option>
+            <% }) %>
 
-    </select>
+        </select>
 
-    <select name="category">
+        <select name="category">
 
-        <% categories.forEach(category => { %>
-            <option value="<%= category.Id%>"><%= category.Name%> </option>
-         
-        <% }) %>
+            <% categories.forEach(category => { %>
+                <option value="<%= category.Id%>"><%= category.Name%> </option>
+            
+            <% }) %>
 
-    </select>
+        </select>
 
-    <input type="submit">
+        <input type="submit">
 
-</form>
+    </form>
+</main>

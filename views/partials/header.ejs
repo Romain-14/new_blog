@@ -1,17 +1,17 @@
 <header>
     <nav>
-        <a href="/">home</a>
-        <a href="/blog">blog</a>
+        <a href="/"><i class="fa-solid fa-house"></i>home</a>
+        <a href="/blog"><i class="fa-solid fa-newspaper"></i>blog</a>
 
         <% if (session.user?.role === "admin") { %>
-            <a href="/admin">admin</a>
+            <a href="/admin"><i class="fa-solid fa-toolbox"></i>admin</a>
         <% } %>
 
         <% if (session.isLogged) { %>
-            <a href="/entryUser/signout">logout</a>
+            <a href="/entryUser/signout"><i class="fa-solid fa-arrow-right-from-bracket"></i>logout</a>
          
         <% } else { %>
-            <a href="/entryUser/signin">sign in/up</a>
+            <a href="/entryUser/signin"><i class="fa-solid fa-arrow-right-to-bracket"></i>sign in/up</a>
         <% } %>
     </nav>
 </header>

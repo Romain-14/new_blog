@@ -1,3 +1,5 @@
+<main id="entryUser" role="main">
+
 
 <% if (type === 'signin') {%>
 
@@ -9,8 +11,11 @@
 		<input type="submit">
 	</form>
 
-	<p>Don't have an account ?</p>
-	<a href="/entryUser/signup">Sign up</a>
+	<div>
+		<p>Don't have an account ?</p>
+		<a href="/entryUser/signup">Sign up</a>
+
+	</div>
 
 <% } %>
 
@@ -29,7 +34,12 @@
 		<input type="submit">
 	</form>
 
-	<p>Already have an account ?</p>
-	<a href="/entryUser/signin">Sign in</a>
+	<div>
+		<p>Already have an account ?</p>
+		<a href="/entryUser/signin">Sign in</a>
+
+	</div>
 
 <% } %>
+
+</main>

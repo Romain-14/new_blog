@@ -4,5 +4,5 @@ export const homePage =  (req, res, next) => {
 }
 
 export const pageNotFound = (req, res, next) => {
-    res.render('layout', {template: 'pageNotFound'});
+    res.render('pageNotFound');
 }
