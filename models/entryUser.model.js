@@ -16,7 +16,7 @@ class User {
         const [query] = await pool.execute(q, [...Object.values(datas)]);
         return query;
     }
-
+    
 }
 
 export default User;

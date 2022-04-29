@@ -132,6 +132,7 @@ export const getUsers = async (req,res,next)=>{
     }
 }
 
+
 export const updateUser = async (req,res,next) => {
     const datas = {
         role: req.body.role,
